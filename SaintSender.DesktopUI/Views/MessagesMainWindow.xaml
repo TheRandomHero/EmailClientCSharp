@@ -1,0 +1,27 @@
+﻿<Window x:Class="SaintSender.DesktopUI.Views.MessagesMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SaintSender.DesktopUI.Views"
+        mc:Ignorable="d"
+        Title="MessagesMainWindow">
+    <Grid Width="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*">
+            </RowDefinition>
+            <RowDefinition Height="9*">
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <DataGrid Name="mailbox" ItemsSource="{Binding}" HorizontalAlignment="Left" Grid.Row="1" 
+                  VerticalAlignment="Top" AutoGenerateColumns="False"
+                  MouseDoubleClick="Mailbox_MouseDoubleClick" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="From"  Binding="{Binding From, Mode=OneWay}"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Subject" Binding="{Binding Subject, Mode=OneWay}"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Date" Binding="{Binding Date, Mode=OneWay,  StringFormat=\{0:dd.MM.yy HH:mm:ss\}}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="composeButton" Content="Compose" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="96" Click="ComposeButton_Click" Height="30"/>
+    </Grid>
+</Window>
